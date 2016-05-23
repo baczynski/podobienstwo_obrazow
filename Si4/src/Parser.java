@@ -6,40 +6,43 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Scanner;
 
 public class Parser {
 
     private Path fFilePath;
     private final static Charset ENCODING = StandardCharsets.US_ASCII;
-    private int [][] values;
+    private PictureAttribute[] pictureAttributes;
 
-    public int [][] getValues(String aFileName){
+    public PictureAttribute [] getValues(String aFileName){
         fFilePath = Paths.get(aFileName);
         try {
             processLineByLine();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return values;
+        return pictureAttributes;
     }
 
 
-    public final void processLineByLine() throws IOException {
+    public void processLineByLine() throws IOException {
         try (Scanner scanner =  new Scanner(fFilePath, ENCODING.name())){
             int columns = scanner.nextInt();
             int rows = scanner.nextInt();
-            values = new int[rows][columns];
+            pictureAttributes = new PictureAttribute[rows];
             int lineNumber=0;
             while (scanner.hasNext()){
-                scanner.next();
-                scanner.next();
+                int [] values = new int[columns];
+                double xCoordinate = Double.parseDouble(scanner.next());
+                double yCoordinate = Double.parseDouble(scanner.next());
                 scanner.next();
                 scanner.next();
                 scanner.next();
                 for(int i=0;i<columns;i++){
-                    values[lineNumber][i] = scanner.nextInt();
+                    values[i] = scanner.nextInt();
                 }
+                pictureAttributes[lineNumber] = new PictureAttribute(values,xCoordinate,yCoordinate,lineNumber);
                 lineNumber++;
             }
         }

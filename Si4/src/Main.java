@@ -7,47 +7,45 @@ public class Main {
 
     public static void main(String [] args){
         Parser p = new Parser();
-        int [][] picure1Value= p.getValues("/home/konrad/Pulpit/zdjeciaSI/komputer1.png.haraff.sift");
-        int [][] picure2Value= p.getValues("/home/konrad/Pulpit/zdjeciaSI/komputer2.png.haraff.sift");
+        PictureAttribute [] picture1= p.getValues("/home/konrad/Pulpit/zdjeciaSI/ksiazka1.png.haraff.sift");
+        PictureAttribute [] picture2= p.getValues("/home/konrad/Pulpit/zdjeciaSI/ksiazka2.png.haraff.sift");
 
+        int kNearest =60;
 
-        Picture [] picture1 = new Picture[picure1Value.length];
-        Picture [] picture2 = new Picture[picure2Value.length];
-
-        for(int i=0;i<picure1Value.length;i++){
-            picture1[i] = new Picture(picure1Value[i]);
-        }
-
-        for(int i=0;i<picure2Value.length;i++){
-            picture2[i] = new Picture(picure2Value[i]);
-        }
-
-        KNN knn = new KNN(picture2);
-
-        List<Integer> firstPictureValuesNearestNeighbours= new ArrayList<>();
-        List<Integer> secondPictureValuesNearestNeighbours= new ArrayList<>();
-
-        for(Picture pic: picture1){
-            firstPictureValuesNearestNeighbours.add(knn.getNearestNeighbour(pic));
-        }
-        for(Picture pic: picture2){
-            secondPictureValuesNearestNeighbours.add(knn.getNearestNeighbour(pic));
-        }
-
-        Map<Integer,Integer> keyPoint= new HashMap<>();
 
         for(int i=0;i<picture1.length;i++){
-            if(secondPictureValuesNearestNeighbours.get(firstPictureValuesNearestNeighbours.get(i))==i){
-                keyPoint.put(i,firstPictureValuesNearestNeighbours.get(i));
-            }
+            KNN knn = new KNN(picture2,picture1[i]);
+            picture1[i].setNeighbourHood(knn.getNearestNeighbours(kNearest));
+        }
+        for(int i=0;i<picture2.length;i++){
+            KNN knn = new KNN(picture1,picture2[i]);
+            picture2[i].setNeighbourHood(knn.getNearestNeighbours(kNearest));
         }
 
-        Set<Integer> keySet = keyPoint.keySet();
+        Map<PictureAttribute,PictureAttribute> keyPoint= new HashMap<>();
 
-        Iterator<Integer> it = keySet.iterator();
+        for(int i=0;i<picture1.length;i++){
+            if(picture2[picture1[i].getNearestNeighbourLabel()].getNearestNeighbourLabel()==i){
+                keyPoint.put(picture1[i],picture1[i].getNearestNeighbour());
+            }
+        }
+//        Set<PictureAttribute> keySet = keyPoint.keySet();
+//
+//        Iterator<PictureAttribute> it = keySet.iterator();
+//
+//        while(it.hasNext()){
+//            PictureAttribute key = it.next();
+//            System.out.println(key + "   " + keyPoint.get(key));
+//        }
 
-        while(it.hasNext()){
-            int key = it.next();
+        Map<PictureAttribute,PictureAttribute> compactKeyPointsPairs = Algorithms.getCompactNeighbourhood(keyPoint,20);
+
+        Set<PictureAttribute> keySet = compactKeyPointsPairs.keySet();
+
+        Iterator<PictureAttribute> it = keySet.iterator();
+
+        while (it.hasNext()) {
+            PictureAttribute key = it.next();
             System.out.println(key + "   " + keyPoint.get(key));
         }
     }
