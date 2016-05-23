@@ -10,6 +10,7 @@ public class PictureAttribute {
     private double coordinateX;
     private double coordinateY;
     private List<PictureAttribute> neighbourhood;
+    private PictureAttribute nearestNeighbour;
 
     public PictureAttribute(int [] pictureAttributes,double coordinateX,double coordinateY,int label){
         this.label = label;
@@ -39,9 +40,7 @@ public class PictureAttribute {
         return Integer.toString(label);
     }
 
-    public PictureAttribute getNearestNeighbour(){
-        return neighbourhood.get(0);
-    }
+
     public int getNearestNeighbourLabel(){
         return getNearestNeighbour().getLabel();
     }
@@ -49,5 +48,12 @@ public class PictureAttribute {
     public boolean equals(Object p){
         PictureAttribute pictureAttribute = (PictureAttribute) p;
         return label == pictureAttribute.getLabel() && coordinateX == pictureAttribute.getCoordinateX() && coordinateY == pictureAttribute.getCoordinateY();
+    }
+
+    public void setNearestNeighbour(PictureAttribute nearestNeighbour) {
+        this.nearestNeighbour = nearestNeighbour;
+    }
+    public PictureAttribute getNearestNeighbour(){
+        return nearestNeighbour;
     }
 }
