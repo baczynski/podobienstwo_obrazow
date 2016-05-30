@@ -1,5 +1,6 @@
+package model;
+
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by konrad on 22.05.16.

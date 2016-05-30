@@ -1,3 +1,7 @@
+package neighbourhoodAnalysis;
+
+import model.PictureAttribute;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,10 +13,10 @@ import java.util.List;
 public class Neighbourhood {
 
     private List<Result> resultsList = new ArrayList<>();
-    private PictureAttribute [] currentPicture;
+    private PictureAttribute[] currentPicture;
     private PictureAttribute picture;
 
-    public Neighbourhood(Object [] currentPicture,PictureAttribute picture){
+    public Neighbourhood(Object [] currentPicture, PictureAttribute picture){
         this.currentPicture = new PictureAttribute[currentPicture.length];
         for(int i=0;i<currentPicture.length;i++){
             this.currentPicture[i] = (PictureAttribute) currentPicture[i];

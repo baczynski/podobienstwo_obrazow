@@ -1,6 +1,8 @@
-/**
+package parser; /**
  * Created by konrad on 22.05.16.
  */
+import model.PictureAttribute;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -15,7 +17,7 @@ public class Parser {
     private final static Charset ENCODING = StandardCharsets.US_ASCII;
     private PictureAttribute[] pictureAttributes;
 
-    public PictureAttribute [] getValues(String aFileName){
+    public PictureAttribute[] getValues(String aFileName){
         fFilePath = Paths.get(aFileName);
         try {
             processLineByLine();
