@@ -11,8 +11,8 @@ import java.util.*;
 public class AffineTransformation extends Transformation {
     private static final int numberOfKeyPointsPairs = 3;
 
-    public AffineTransformation(Map<PictureAttribute, PictureAttribute> keyPointsPairs, int modelSize) {
-        super(keyPointsPairs, modelSize);
+    public AffineTransformation(Map<PictureAttribute, PictureAttribute> keyPointsPairs, int modelSize,int height,int width) {
+        super(keyPointsPairs, modelSize,height,width);
     }
 
     @Override
@@ -77,6 +77,72 @@ public class AffineTransformation extends Transformation {
 
     }
 
+        @SuppressWarnings("Duplicates")
+        @Override
+        protected Map<PictureAttribute, PictureAttribute> getNPairs(Map<PictureAttribute, PictureAttribute> keyPointsPairs) {
+            Map<PictureAttribute, PictureAttribute> chosenPairs = new HashMap<>();
+            ArrayList<Integer> randomlyPickedNumbers = new ArrayList<>();
+            int currentIteration = 0;
+            while (randomlyPickedNumbers.size() < 3) {
+                addRandomValueToList(randomlyPickedNumbers, keyPointsPairs.size());
+
+                if (randomlyPickedNumbers.size() == 1) {
+                    addRandomValueToList(randomlyPickedNumbers, keyPointsPairs.size());
+                    PictureAttribute first = getPictureAttributeFromMap(keyPointsPairs.keySet(), randomlyPickedNumbers.get(0));
+                    chosenPairs.put(first, keyPointsPairs.get(first));
+                    currentIteration=0;
+                }
+                if (randomlyPickedNumbers.size() == 2) {
+                    Iterator<PictureAttribute> it = chosenPairs.keySet().iterator();
+                    PictureAttribute p1 = it.next();
+                    PictureAttribute p1Pair = keyPointsPairs.get(p1);
+                    PictureAttribute p2 = getPictureAttributeFromMap(keyPointsPairs.keySet(), randomlyPickedNumbers.get(1));
+                    PictureAttribute p2Pair = keyPointsPairs.get(p2);
+
+                    if (distanceSmaller(p1, p2, Math.pow(r, 2)) || distanceLonger(p1, p2, Math.pow(R, 2)) || distanceSmaller(p1Pair, p2Pair, Math.pow(r, 2)) || distanceLonger(p1Pair, p2Pair, Math.pow(R, 2))) {
+                        randomlyPickedNumbers.remove(randomlyPickedNumbers.size() - 1);
+                        currentIteration++;
+
+                    } else {
+                        chosenPairs.put(p2, p2Pair);
+                        currentIteration=0;
+                    }
+                }
+                if (randomlyPickedNumbers.size() == 3) {
+                    Iterator<PictureAttribute> it = chosenPairs.keySet().iterator();
+                    PictureAttribute p1 = it.next();
+                    PictureAttribute p1Pair = keyPointsPairs.get(p1);
+                    PictureAttribute p2 = it.next();
+                    PictureAttribute p2Pair = keyPointsPairs.get(p2);
+                    PictureAttribute p3 = getPictureAttributeFromMap(keyPointsPairs.keySet(), randomlyPickedNumbers.get(2));
+                    PictureAttribute p3Pair = keyPointsPairs.get(p3);
+
+                    if (distanceSmaller(p1, p3, Math.pow(r, 2)) || distanceLonger(p1, p3, Math.pow(R, 2)) || distanceSmaller(p1Pair, p3Pair, Math.pow(r, 2)) || distanceLonger(p1Pair, p3Pair, Math.pow(R, 2))
+                            || distanceSmaller(p2, p3, Math.pow(r, 2)) || distanceLonger(p2, p3, Math.pow(R, 2)) || distanceSmaller(p2Pair, p3Pair, Math.pow(r, 2)) || distanceLonger(p2Pair, p3Pair, Math.pow(R, 2))) {
+                        randomlyPickedNumbers.remove(randomlyPickedNumbers.size() - 1);
+                        currentIteration++;
+                    } else {
+                        chosenPairs.put(p3, p3Pair);
+                        currentIteration=0;
+                    }
+                }
+                if(currentIteration >50){
+                    Iterator<PictureAttribute> it = chosenPairs.keySet().iterator();
+                    for(int i=0;i<randomlyPickedNumbers.size()-1;i++){
+                        it.next();
+                    }
+                    chosenPairs.remove(it.next());
+                    randomlyPickedNumbers.remove(randomlyPickedNumbers.size() - 1);
+                }
+            }
+
+
+
+
+
+        return chosenPairs;
+    }
+
     @Override
     protected Matrix getResultMatrix(Matrix vector) {
         Matrix result = new Matrix(3, 3);
@@ -92,4 +158,6 @@ public class AffineTransformation extends Transformation {
         return result;
     }
 
+
 }
+

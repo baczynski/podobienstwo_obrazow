@@ -29,10 +29,7 @@ public class Neighbourhood {
         int current = 0;
         for (PictureAttribute train : currentPicture) {
             if(!train.equals(picture)) {
-                int dist = 0;
-                for (int i = 0; i < train.getPictureAttributes().length; i++) {
-                    dist += Math.abs(train.getPictureAttributes()[i] - picture.getPictureAttributes()[i]);
-                }
+                double dist = Math.pow((train.getCoordinateX() - picture.getCoordinateX()),2) + Math.pow((train.getCoordinateY() - picture.getCoordinateY()),2);
                 resultsList.add(new Result(current++, dist));
             }
         }
@@ -47,6 +44,7 @@ public class Neighbourhood {
         return nearestsNeighbours;
     }
 
+
     private class DistanceComparator implements Comparator<Result> {
 
         @Override
@@ -56,15 +54,15 @@ public class Neighbourhood {
     }
 
     private class Result {
-        private int distance;
+        private double distance;
         private int label;
 
-        public Result(int label, int distance) {
+        public Result(int label, double distance) {
             this.distance = distance;
             this.label = label;
         }
 
-        public int getDistance() {
+        public double getDistance() {
             return distance;
         }
 

@@ -7,10 +7,7 @@ import transformation.AffineTransformation;
 import transformation.PerspectiveTransformation;
 import transformation.Transformation;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by konrad on 23.05.16.
@@ -19,12 +16,13 @@ public class Algorithms {
 
     public final static int AFFINE_TRANSFORMATION = 0;
     public final static int PERSPECTIVE_TRANSFORMATION = 1;
-    private final static int MAX_ERROR = 10;
+    private final static double MAX_ERROR = 5;
     public static List<PictureAttribute> pointsToMark;
 
     public static Map<PictureAttribute, PictureAttribute> getCompactNeighbourhood(Map<PictureAttribute, PictureAttribute> keyPointsPairs, int n) {
+        Map<PictureAttribute,PictureAttribute> compactedKeyPairs = new HashMap<>();
         Iterator<PictureAttribute> it = keyPointsPairs.keySet().iterator();
-        List<Integer> toRemove = new ArrayList<>();
+        List<Integer> toAdd = new ArrayList<>();
         int index = 0;
         while (it.hasNext()) {
             int counter = 0;
@@ -32,34 +30,37 @@ public class Algorithms {
             Iterator<PictureAttribute> neighbourhoodIterator = p1.getNeighbourhood().iterator();
             while (neighbourhoodIterator.hasNext()) {
                 PictureAttribute nextPicture = neighbourhoodIterator.next();
-                PictureAttribute p1Partner = keyPointsPairs.get(p1);
-                List<PictureAttribute> p1PartnerNeighbourhood = p1Partner.getNeighbourhood();
-                if (p1PartnerNeighbourhood.contains(keyPointsPairs.get(nextPicture))) {
-                    counter++;
+                if(p1.getNeighbourhood().contains(nextPicture)) {
+                    PictureAttribute p1Partner = keyPointsPairs.get(p1);
+                    List<PictureAttribute> p1PartnerNeighbourhood = p1Partner.getNeighbourhood();
+                    if (p1PartnerNeighbourhood.contains(keyPointsPairs.get(nextPicture))) {
+                        counter++;
+                    }
                 }
             }
-            if (counter < n) {
-                toRemove.add(index);
+            if (counter > n) {
+                toAdd.add(index);
             }
             index++;
         }
         it = keyPointsPairs.keySet().iterator();
         index = 0;
         while (it.hasNext()) {
-            it.next();
-            if (toRemove.contains(index++)) {
-                it.remove();
+            PictureAttribute pictureAttribute = it.next();
+            if (toAdd.contains(index++)) {
+                compactedKeyPairs.put(pictureAttribute,keyPointsPairs.get(pictureAttribute));
             }
         }
-        return keyPointsPairs;
+        return compactedKeyPairs;
     }
 
-    public static Model ransac(int transformation, Map<PictureAttribute, PictureAttribute> keyPointsPairs, int iterations) {
+    public static Model ransac(int transformation, Map<PictureAttribute, PictureAttribute> keyPointsPairs, int iterations,int height,int width) {
         Model bestModel = null;
         int bestScore = 0;
-        List<PictureAttribute> points = new ArrayList<>();
+
         for (int i = 0; i < iterations; i++) {
-            Transformation t = getTransformation(transformation, keyPointsPairs, 1);
+            List<PictureAttribute> points = new ArrayList<>();
+            Transformation t = getTransformation(transformation, keyPointsPairs, 1,height,width);
             Model model = t.getModel();
             Matrix transformationMatrix = model.getTransformation(0);
             int score = 0;
@@ -101,14 +102,14 @@ public class Algorithms {
         return Math.sqrt(Math.pow(transformationX1 - transformationX2, 2) + Math.pow(transformationY1 - transformationY2, 2));
     }
 
-    private static Transformation getTransformation(int tranformation, Map<PictureAttribute, PictureAttribute> keyPointsPairs, int modelSize) {
-        Transformation t = null;
+    private static Transformation getTransformation(int tranformation, Map<PictureAttribute, PictureAttribute> keyPointsPairs, int modelSize,int height,int width) {
+        Transformation t;
         switch (tranformation) {
             case AFFINE_TRANSFORMATION:
-                t = new AffineTransformation(keyPointsPairs, modelSize);
+                t = new AffineTransformation(keyPointsPairs, modelSize,height,width);
                 break;
             default:
-                t = new PerspectiveTransformation(keyPointsPairs, modelSize);
+                t = new PerspectiveTransformation(keyPointsPairs, modelSize,height,width);
         }
         return t;
     }

@@ -13,46 +13,26 @@ public abstract class Transformation {
 
     protected Model model;
     protected Map <PictureAttribute, PictureAttribute> randomlyChosenPairs;
+    protected int pictureSize;
+    protected double r=0.01;
+    protected double R=0.3;
 
-    public Transformation(Map<PictureAttribute, PictureAttribute> keyPointsPairs, int modelSize){
+    public Transformation(Map<PictureAttribute, PictureAttribute> keyPointsPairs, int modelSize,int height,int width){
         model = new Model();
+        pictureSize = height > width ? height : width;
+        r *=pictureSize;
+        R *=pictureSize;
         for(int i=0;i<modelSize;i++){
             addTransformation(keyPointsPairs);
         }
+
     }
 
     protected abstract int getNumberOfKeyPointsPairs();
     protected abstract Matrix getFirstPictureCoordinatesMatrix(Map<PictureAttribute, PictureAttribute> keyPointsPairs);
     protected abstract Matrix getSecondPictureCoordinatesMatrix(Map<PictureAttribute, PictureAttribute> keyPointsPairs);
 
-    protected Map<PictureAttribute, PictureAttribute> getNPairs(Map<PictureAttribute, PictureAttribute> keyPointsPairs) {
-        Map<PictureAttribute, PictureAttribute> chosenPairs = new HashMap<>();
-        ArrayList<Integer> randomlyPickedNumbers = new ArrayList<>();
-        Random random = new Random();
-        for (int i = 0; i < getNumberOfKeyPointsPairs(); i++) {
-            int drewNumber = random.nextInt(keyPointsPairs.size());
-            while(randomlyPickedNumbers.contains(drewNumber)){
-                drewNumber = random.nextInt(keyPointsPairs.size());
-            }
-
-            randomlyPickedNumbers.add(drewNumber);
-        }
-        Collections.sort(randomlyPickedNumbers);
-
-        Iterator<PictureAttribute> iterator = keyPointsPairs.keySet().iterator();
-
-        int current = 0;
-        int elementNumber = 0;
-        while (iterator.hasNext() && elementNumber < randomlyPickedNumbers.size()) {
-            PictureAttribute currentPictureAttribute = iterator.next();
-            if (randomlyPickedNumbers.get(elementNumber) == current) {
-                chosenPairs.put(currentPictureAttribute, keyPointsPairs.get(currentPictureAttribute));
-                elementNumber++;
-            }
-            current++;
-        }
-        return chosenPairs;
-    }
+    protected abstract Map<PictureAttribute, PictureAttribute> getNPairs(Map<PictureAttribute, PictureAttribute> keyPointsPairs);
 
 
     private void addTransformation(Map<PictureAttribute, PictureAttribute> keyPointsPairs) {
@@ -72,5 +52,38 @@ public abstract class Transformation {
 
     public final Model getModel(){
         return model;
+    }
+
+    protected boolean distanceLonger(PictureAttribute p1,PictureAttribute p2,double x){
+        //System.out.println(Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2)+ Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2));
+        return Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2)+ Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2) > x;
+
+    }
+
+    protected boolean distanceSmaller(PictureAttribute p1,PictureAttribute p2,double x){
+        //System.out.println(Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2)+ Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2));
+        return Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2)+ Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2) < x;
+    }
+
+    protected void addRandomValueToList(List<Integer> randomlyPickedNumbers,int keyPointsPairsSize){
+        Random random = new Random();
+        int drewNumber = random.nextInt(keyPointsPairsSize);
+        while(randomlyPickedNumbers.contains(drewNumber)){
+            drewNumber = random.nextInt(keyPointsPairsSize);
+        }
+
+        randomlyPickedNumbers.add(drewNumber);
+    }
+
+    protected PictureAttribute getPictureAttributeFromMap(Set<PictureAttribute> keyset, int numberOfKeyPointsPairs) {
+
+        int current = 0;
+        Iterator<PictureAttribute> iterator = keyset.iterator();
+        while (current != numberOfKeyPointsPairs) {
+            iterator.next();
+            current++;
+        }
+        return iterator.next();
+
     }
 }
