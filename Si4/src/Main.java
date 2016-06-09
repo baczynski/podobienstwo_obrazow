@@ -5,6 +5,7 @@ import model.PictureAttribute;
 import neighbourhoodAnalysis.KNN;
 import neighbourhoodAnalysis.Neighbourhood;
 import parser.Parser;
+import transformation.Transformation;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -13,6 +14,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
+import java.util.concurrent.TransferQueue;
 
 /**
  * Created by konrad on 22.05.16.
@@ -20,8 +22,8 @@ import java.util.List;
 public class Main {
 
     private static final String path = "/home/konrad/Pulpit/zdjeciaSi/";
-    private static final String path1 = "castle1";
-    private static final String path2 = "castle2";
+    private static final String path1 = "ksiazka1";
+    private static final String path2 = "ksiazka2";
 
     private static final int kNearest = 50;
     private static final String path3 = path1+path2;
@@ -38,6 +40,8 @@ public class Main {
         Map<PictureAttribute, PictureAttribute> keyPoint = getKeyPointsPairs(picture1, picture2);
         Map<PictureAttribute, PictureAttribute> keyPointRansac = getKeyPointsPairs(picture1, picture2);
 
+
+        System.out.println("Liczba par punktów kluczowych przed zastosowaniem algorytmu: " + keyPoint.size());
         setPictureNeighbourhood(picture1, picture2, keyPoint);
 
         long startTimenNeighbours = System.currentTimeMillis();
@@ -45,6 +49,14 @@ public class Main {
         List<BufferedImage> neighbourAnalysisImagesList = getNeighbourhoodAnalysisImage(keyPoint);
 
         long endTimeNeighbours  = System.currentTimeMillis();
+
+        System.out.println("Analiza sąsiedztwa: " + (endTimeNeighbours - startTimenNeighbours) + " milisekund");
+        System.out.println("Liczba sąsiadów: " + kNearest);
+        System.out.println("Sąsiedztwo: " + neighbourhood);
+        System.out.println();
+
+        System.out.println("R: " + Transformation.R);
+        System.out.println("r: " + Transformation.r);
 
         long startTimeRansacAffine = System.currentTimeMillis();
 
@@ -72,16 +84,20 @@ public class Main {
             e.printStackTrace();
         }
 
-        System.out.println("Analiza sąsiedztwa: " + (endTimeNeighbours - startTimenNeighbours));
-        System.out.println("Ransac afiniczna: " + (endTimeRansacAffine - startTimeRansacAffine));
-        System.out.println("Ransac perspektywiczna: " + (endTimeRansacPerspective - startTimeRansacPerspective));
+
+        System.out.println("Ransac afiniczna: " + (endTimeRansacAffine - startTimeRansacAffine)+ " milisekund");
+        System.out.println("Ransac perspektywiczna: " + (endTimeRansacPerspective - startTimeRansacPerspective)+ " milisekund");
+
+
+
+        System.out.println("Liczba iteracji: " + iterations);
+        System.out.println("Maksymalny błąd: " + Algorithms.MAX_ERROR);
+
+
 
     }
 
 
-    public static int ileWystapien(String napis,char c){
-        return (int) napis.chars().filter(n -> n==c).count();
-    }
     private static void setNearestNeighbour(PictureAttribute[] picture1, PictureAttribute[] picture2) {
         for (int i = 0; i < picture1.length; i++) {
             KNN knn = new KNN(picture2, picture1[i]);
@@ -135,6 +151,7 @@ public class Main {
             img1.setRGB((int) pictureAttribute1.getCoordinateX(), (int) pictureAttribute1.getCoordinateY(), Color.RED.getRGB());
             img2.setRGB((int) pictureAttribute2.getCoordinateX(), (int) pictureAttribute2.getCoordinateY(), Color.RED.getRGB());
         }
+        System.out.println("Liczba par punktów analiza sąsiedztwa: " + keySet.size());
         images.add(img1);
         images.add(img2);
         images.add(drawLines(img1,img2,new ArrayList<>(keySet),keyPoint));
@@ -172,6 +189,7 @@ public class Main {
                 img2.setRGB((int) keyPoint.get(pointsToMark.get(j)).getCoordinateX(), (int) keyPoint.get(pointsToMark.get(j)).getCoordinateY(), Color.RED.getRGB());
             }
         }
+        System.out.println("Liczba par punktów ransac "+ (transformation == Algorithms.AFFINE_TRANSFORMATION ? "afiniczna: " : "perspektywiczna: ") + Algorithms.pointsToMark.size());
         images.add(img1);
         images.add(img2);
         images.add(drawLines(img1,img2,Algorithms.pointsToMark,keyPoint));

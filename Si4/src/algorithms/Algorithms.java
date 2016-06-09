@@ -16,7 +16,7 @@ public class Algorithms {
 
     public final static int AFFINE_TRANSFORMATION = 0;
     public final static int PERSPECTIVE_TRANSFORMATION = 1;
-    private final static double MAX_ERROR = 5;
+    public final static double MAX_ERROR = 5;
     public static List<PictureAttribute> pointsToMark;
 
     public static Map<PictureAttribute, PictureAttribute> getCompactNeighbourhood(Map<PictureAttribute, PictureAttribute> keyPointsPairs, int n) {

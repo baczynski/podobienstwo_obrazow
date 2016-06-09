@@ -12,24 +12,30 @@ import java.util.*;
 public abstract class Transformation {
 
     protected Model model;
-    protected Map <PictureAttribute, PictureAttribute> randomlyChosenPairs;
+    protected Map<PictureAttribute, PictureAttribute> randomlyChosenPairs;
     protected int pictureSize;
-    protected double r=0.01;
-    protected double R=0.3;
+    public static double r = 0.01;
+    public static double R = 0.3;
+    private static boolean isRrSet = false;
 
-    public Transformation(Map<PictureAttribute, PictureAttribute> keyPointsPairs, int modelSize,int height,int width){
+    public Transformation(Map<PictureAttribute, PictureAttribute> keyPointsPairs, int modelSize, int height, int width) {
         model = new Model();
         pictureSize = height > width ? height : width;
-        r *=pictureSize;
-        R *=pictureSize;
-        for(int i=0;i<modelSize;i++){
+        if (!isRrSet) {
+            r *= pictureSize;
+            R *= pictureSize;
+            isRrSet = true;
+        }
+        for (int i = 0; i < modelSize; i++) {
             addTransformation(keyPointsPairs);
         }
 
     }
 
     protected abstract int getNumberOfKeyPointsPairs();
+
     protected abstract Matrix getFirstPictureCoordinatesMatrix(Map<PictureAttribute, PictureAttribute> keyPointsPairs);
+
     protected abstract Matrix getSecondPictureCoordinatesMatrix(Map<PictureAttribute, PictureAttribute> keyPointsPairs);
 
     protected abstract Map<PictureAttribute, PictureAttribute> getNPairs(Map<PictureAttribute, PictureAttribute> keyPointsPairs);
@@ -50,25 +56,25 @@ public abstract class Transformation {
 
     protected abstract Matrix getResultMatrix(Matrix vector);
 
-    public final Model getModel(){
+    public final Model getModel() {
         return model;
     }
 
-    protected boolean distanceLonger(PictureAttribute p1,PictureAttribute p2,double x){
+    protected boolean distanceLonger(PictureAttribute p1, PictureAttribute p2, double x) {
         //System.out.println(Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2)+ Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2));
-        return Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2)+ Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2) > x;
+        return Math.pow(p1.getCoordinateX() - p2.getCoordinateX(), 2) + Math.pow(p1.getCoordinateX() - p2.getCoordinateX(), 2) > x;
 
     }
 
-    protected boolean distanceSmaller(PictureAttribute p1,PictureAttribute p2,double x){
+    protected boolean distanceSmaller(PictureAttribute p1, PictureAttribute p2, double x) {
         //System.out.println(Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2)+ Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2));
-        return Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2)+ Math.pow(p1.getCoordinateX() - p2.getCoordinateX(),2) < x;
+        return Math.pow(p1.getCoordinateX() - p2.getCoordinateX(), 2) + Math.pow(p1.getCoordinateX() - p2.getCoordinateX(), 2) < x;
     }
 
-    protected void addRandomValueToList(List<Integer> randomlyPickedNumbers,int keyPointsPairsSize){
+    protected void addRandomValueToList(List<Integer> randomlyPickedNumbers, int keyPointsPairsSize) {
         Random random = new Random();
         int drewNumber = random.nextInt(keyPointsPairsSize);
-        while(randomlyPickedNumbers.contains(drewNumber)){
+        while (randomlyPickedNumbers.contains(drewNumber)) {
             drewNumber = random.nextInt(keyPointsPairsSize);
         }
 
