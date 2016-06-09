@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e92eca8d-66e8-4174-894d-83c6877839a0" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/castle1castle2neighbourhoodAnalysis.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/castle1castle2ransacAffine.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/castle1castle2ransacPerspective.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/castle1dzbanek1neighbourhoodAnalysis.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/castle1dzbanek1ransacAffine.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/castle1dzbanek1ransacPerspective.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/castle1neighbourhoodAnalysis.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/castle1ransacAffine.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/castle2neighbourhoodAnalysis.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/castle2ransacAffine.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dzbanek1neighbourhoodAnalysis.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dzbanek1ransacAffine.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Si4/Main.class" afterPath="$PROJECT_DIR$/out/production/Si4/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Si4/algorithms/Algorithms.class" afterPath="$PROJECT_DIR$/out/production/Si4/algorithms/Algorithms.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Si4/transformation/AffineTransformation.class" afterPath="$PROJECT_DIR$/out/production/Si4/transformation/AffineTransformation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Si4/transformation/PerspectiveTransformation.class" afterPath="$PROJECT_DIR$/out/production/Si4/transformation/PerspectiveTransformation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Si4/transformation/Transformation.class" afterPath="$PROJECT_DIR$/out/production/Si4/transformation/Transformation.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Si4/src/Main.java" afterPath="$PROJECT_DIR$/Si4/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Si4/src/algorithms/Algorithms.java" afterPath="$PROJECT_DIR$/Si4/src/algorithms/Algorithms.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Si4/src/transformation/Transformation.java" afterPath="$PROJECT_DIR$/Si4/src/transformation/Transformation.java" />
     </list>
     <ignored path="SI4.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,92 +26,7 @@
     <favorites_list name="SI4" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AffineTransformation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Si4/src/transformation/AffineTransformation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="954">
-              <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PerspectiveTransformation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Si4/src/transformation/PerspectiveTransformation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3258">
-              <caret line="189" column="83" selection-start-line="189" selection-start-column="83" selection-end-line="189" selection-end-column="83" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Transformation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Si4/src/transformation/Transformation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KNN.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Si4/src/neighbourhoodAnalysis/KNN.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="30" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Neighbourhood.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Si4/src/neighbourhoodAnalysis/Neighbourhood.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Algorithms.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Si4/src/algorithms/Algorithms.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="22" column="64" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="64" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Si4/src/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -190,9 +85,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="27" />
-    <option name="width" value="1600" />
-    <option name="height" value="873" />
+    <option name="x" value="288" />
+    <option name="y" value="397" />
+    <option name="width" value="1190" />
+    <option name="height" value="661" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -740,16 +636,17 @@
       <workItem from="1464787855632" duration="10495000" />
       <workItem from="1464803345701" duration="5426000" />
       <workItem from="1465464220227" duration="821000" />
-      <workItem from="1465471693791" duration="40000" />
+      <workItem from="1465471693791" duration="283000" />
+      <workItem from="1465472225242" duration="8000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="177464000" />
+    <option name="totallyTimeSpent" value="177715000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="27" width="1600" height="873" extended-state="6" />
-    <editor active="true" />
+    <frame x="288" y="397" width="1190" height="661" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -835,9 +732,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -852,9 +746,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -862,7 +753,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="11" column="33" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -897,9 +787,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="25" column="32" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -934,9 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="25" column="32" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -944,7 +828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -979,9 +862,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -989,7 +869,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
           <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1014,9 +893,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1024,7 +900,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1049,9 +924,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1059,7 +931,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1084,9 +955,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1094,7 +962,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1129,9 +996,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1139,7 +1003,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1164,7 +1027,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1184,57 +1046,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Si4/src/transformation/PerspectiveTransformation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3258">
+        <state relative-caret-position="691">
           <caret line="189" column="83" selection-start-line="189" selection-start-column="83" selection-end-line="189" selection-end-column="83" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Si4/src/transformation/AffineTransformation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="954">
-          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Si4/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Si4/src/neighbourhoodAnalysis/KNN.java">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="30" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Si4/src/transformation/Transformation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
+        <state relative-caret-position="18">
           <caret line="13" column="26" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Si4/src/algorithms/Algorithms.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
+        <state relative-caret-position="198">
           <caret line="22" column="64" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1244,8 +1077,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Si4/src/neighbourhoodAnalysis/Neighbourhood.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="26" column="0" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        <state relative-caret-position="162">
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Si4/src/neighbourhoodAnalysis/KNN.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="30" selection-start-line="0" selection-start-column="30" selection-end-line="0" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Si4/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
